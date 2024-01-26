@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+class NumGuess
+{
+public:
+    int guess;
+    int time1;
+    int num;
+    int a;
+    int choose;
+    string n = "e";
+    void game()
+    {
+        while (n != "exit")
+        {
+            // system("cls");
+            cout << "Enter 1 or 0: 1 for play 0 for exit " << endl;
+            cin >> choose;
+            switch (choose)
+            {
+            case 1:
+                srand(time(NULL));
+                guess = rand() % 100 + 1;
+                time1 = 4;
+                a = 0;
+                cout << "Enter your number :" << endl;
+                do
+                {
+                    cout << "Remaining Turns :" << time1 << endl;
+                    cin >> num;
+                    if (num == guess)
+                    {
+                        cout << "Yahoo!! You got the number. CONGO!!:)";
+                        a = 1;
+                    }
+                    else if (num > guess)
+                    {
+                        cout << "Try any Smaller Number. " << endl <<"******************************"<< endl;
+                    }
+                    else if (num < guess)
+                    {
+                        cout << "Try any larger Number. " << endl <<"******************************"<< endl;
+                    }
+                } while (a == 0 && time1--);
+                cout << guess << " is the Number." << endl << endl;
+                break;
+            case 0:
+                n = "exit";
+                break;
+
+            default:
+                cout << "Choose Correctly!!";
+                break;
+            }
+        }
+    }
+};
+
+int main()
+{
+    NumGuess a;
+    a.game();
+    return 0;
+}
